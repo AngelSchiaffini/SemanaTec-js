@@ -1,33 +1,32 @@
-//Como utilizar la herramienta ORM Sequelize
-
-const Sequelize = require('sequelize');
-const {applyRelations} = require('./relations.js')
+const Sequelize= require('sequelize');
+const {applyRelations} =require('./relations')
 //Configurar la conexion
-const sequelize = new Sequelize('semanatec', 'admin', '12345678aA',{
-dialect: 'mysql',
-host:'database-1.cxvvjooseu7q.us-east-1.rds.amazonaws.com',
-define:{
-    //Evitar que nos ponga createAt y updateAt
-    timestamps: false,
-    //Pluralizar
-    freezeTableName: true
-}
+const sequelize = new Sequelize('semanatec','admin','Password',{
+    dialect:'mysql',
+    host:'database-1.c8zm2qfqovql.us-east-1.rds.amazonaws.com',
+    define:{
+        //Evitar que nos ponga createdAt y updateAt
+        timestamps:false,
+        //Pluralizar
+        freezeTableName:true
+    }
 });
 
-const modelDefiners = [
+//Cargar modelos
+const modelDefiners =[
     require('../models/persona'),
     require('../models/proyecto'),
-    require('../models/proyectoPersona')
-]
+    require('../models/proyectoPersona')    
+];
 
-
+//Vicular el modelo con el objeto de conexión
 for(const modelDefiner of modelDefiners){
     modelDefiner(sequelize);
 }
 
-//Construir las rlaciones
+//Construir las relaciones
 applyRelations(sequelize);
 
-
-//Exportar el elemento de conexion
+//exportar el elemento de conexión
 module.exports = sequelize;
+

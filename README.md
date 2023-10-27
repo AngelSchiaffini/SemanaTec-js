@@ -1,1 +1,1 @@
-# SemanaTec-py
+# semanatec-js

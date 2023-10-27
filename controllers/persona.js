@@ -6,11 +6,11 @@ exports.postAgregarPersona=(req,res)=>{
     console.log(req.body);
     Persona.create(req.body)
         .then(result=>{
-            console.log("Registro exitoso");
+            console.log("Registro existoso");
             res.send("Registro exitoso");
-    })
-    .catch((error)=>{
-        console.log(error);
-        res.send('Hubo un problema');
-    })
+        })
+        .catch(error=>{
+            console.log(error);
+            res.send('Hubo un problema')
+        })
 }

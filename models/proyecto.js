@@ -1,15 +1,15 @@
-const Sequelize = require('sequelize');
+const Sequelize=require('sequelize');
 
 const Proyecto = (sequelize)=>{
     sequelize.define('proyecto',{
         idProyecto:{
-            type: Sequelize.STRING,
-            autoIncrement: true,
-            primarykey: true,
-            allowNull: false
+            type:Sequelize.INTEGER,
+            autoIncrement:true,
+            primaryKey:true,
+            allowNull:false
         },
-        nombre:Sequelize.STRING,
-        descripction:Sequelize.STRING
+        nombre:Sequelize.STRING(30),
+        descripcion:Sequelize.STRING
     })
-}
-module.exports = Proyecto
+};
+module.exports = Proyecto;
